@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Asith Mahat - Link Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles/styles.css">
+
+  <!-- Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/icon/icon.ico">
+</head>
+<body>
+  <!-- Full screen loader that covers everything until the site is "ready" -->
+  <div class="loader" id="loader">
+    <div class="loader-panel left"></div>
+    <div class="loader-panel right"></div>
+    <div class="loader-logo">
+      <img src="images/amlogo-orig.png" alt="Asith Mahat Logo" />
+      <span>THERE CAN ONLY BE ONE KING</span>
+    </div>
+  </div>
+
+  <div class="app-shell">
+    <!-- Top folder cover section -->
+    <header class="hero">
+      
+      <div class="hero-logo-wrapper">
+        <img class="hero-logo" src="images/amlogo-orig.png" alt="Asith Mahat Logo" />
+      </div>
+
+      <h1 class="hero-title">Asith Mahat</h1>
+
+      <div class="hero-divider"></div>
+      <p class="hero-role">ENGINEER</p>
+      <p class="hero-discription">AUTOMATION &middot; AI &middot; STRUCTURES</p>
+      <!-- &#9812; -->
+    </header>
+
+    <!-- Visual "edge" between hero and the collapsible body -->
+    <!-- <div class="hero-edge"></div> -->
+
+    <!-- Collapsible folder body that slides open and closed -->
+    <div class="links-wrapper" id="linksWrapper">
+      <main class="links-section">
+        <!-- Social section -->
+        <section class="section">
+          <div class="section-heading">
+            <h2>Socials</h2>
+            <span>Find me online</span>
+          </div>
+
+          <div class="social-grid">
+            <!-- First two cards stay visible all the time.
+                 Extra cards are moved into a collapsible wrapper by JS. -->
+            <a class="social-card" href="https://t.me/AsithMahatBot" target="_blank" rel="noreferrer">
+              <div class="social-top">
+                <div class="social-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="1 0 24 24">
+                    <path d="M 20.302734 2.984375 C 20.013769 2.996945 19.748583 3.080055 19.515625 3.171875 C 19.300407 3.256634 18.52754 3.5814726 17.296875 4.0976562 C 16.06621 4.61384 14.435476 5.2982348 12.697266 6.0292969 C 9.2208449 7.4914211 5.314238 9.1361259 3.3125 9.9785156 C 3.243759 10.007156 2.9645852 10.092621 2.65625 10.328125 C 2.3471996 10.564176 2.0039062 11.076462 2.0039062 11.636719 C 2.0039062 12.088671 2.2295201 12.548966 2.5019531 12.8125 C 2.7743861 13.076034 3.0504903 13.199244 3.28125 13.291016 L 3.28125 13.289062 C 4.0612776 13.599827 6.3906939 14.531938 6.9453125 14.753906 C 7.1420423 15.343433 7.9865895 17.867278 8.1875 18.501953 L 8.1855469 18.501953 C 8.3275588 18.951162 8.4659791 19.243913 8.6582031 19.488281 C 8.7543151 19.610465 8.8690398 19.721184 9.0097656 19.808594 C 9.0637596 19.842134 9.1235454 19.868148 9.1835938 19.892578 C 9.191962 19.896131 9.2005867 19.897012 9.2089844 19.900391 L 9.1855469 19.894531 C 9.2029579 19.901531 9.2185841 19.911859 9.2363281 19.917969 C 9.2652427 19.927926 9.2852873 19.927599 9.3242188 19.935547 C 9.4612233 19.977694 9.5979794 20.005859 9.7246094 20.005859 C 10.26822 20.005859 10.601562 19.710937 10.601562 19.710938 L 10.623047 19.695312 L 12.970703 17.708984 L 15.845703 20.369141 C 15.898217 20.443289 16.309604 21 17.261719 21 C 17.829844 21 18.279025 20.718791 18.566406 20.423828 C 18.853787 20.128866 19.032804 19.82706 19.113281 19.417969 L 19.115234 19.416016 C 19.179414 19.085834 21.931641 5.265625 21.931641 5.265625 L 21.925781 5.2890625 C 22.011441 4.9067171 22.036735 4.5369631 21.935547 4.1601562 C 21.834358 3.7833495 21.561271 3.4156252 21.232422 3.2226562 C 20.903572 3.0296874 20.591699 2.9718046 20.302734 2.984375 z M 19.908203 5.1738281 C 19.799442 5.7198576 17.33401 18.105877 17.181641 18.882812 L 13.029297 15.041016 L 10.222656 17.414062 L 11 14.375 C 11 14.375 16.362547 8.9468594 16.685547 8.6308594 C 16.945547 8.3778594 17 8.2891719 17 8.2011719 C 17 8.0841719 16.939781 8 16.800781 8 C 16.675781 8 16.506016 8.1197812 16.416016 8.1757812 C 15.272368 8.8887854 10.401283 11.664685 8.0058594 13.027344 C 7.8617016 12.96954 5.6973962 12.100458 4.53125 11.634766 C 6.6055146 10.76177 10.161156 9.2658083 13.472656 7.8730469 C 15.210571 7.142109 16.840822 6.4570977 18.070312 5.9414062 C 19.108158 5.5060977 19.649538 5.2807035 19.908203 5.1738281 z M 17.152344 19.025391 C 17.152344 19.025391 17.154297 19.025391 17.154297 19.025391 C 17.154252 19.025621 17.152444 19.03095 17.152344 19.03125 C 17.153615 19.024789 17.15139 19.03045 17.152344 19.025391 z"></path>
+                  </svg>
+                </div>
+                <div class="social-label">
+                  <strong>Telegram</strong>
+                  <span class="long_disc">Contact my AI bot for enquaries</span>
+                  <span class="short_disc">AI bot enquiries</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="social-card" href="https://linkedin.com/asithmahat" target="_blank" rel="noreferrer">
+              <div class="social-top">
+                <div class="social-icon">
+                  <svg viewBox="0 0 600 600" width="100%" height="100%" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feDropShadow dx="0" dy="0" stdDeviation="32" flood-color="#f7c76a" flood-opacity="1" />
+                      </filter>
+                    </defs>
+                    <g filter="url(#glow)">
+                      <path d="M196.3 512L103.4 512L103.4 212.9L196.3 212.9L196.3 512zM149.8 172.1C120.1 172.1 96 147.5 96 117.8C96 103.5 101.7 89.9 111.8 79.8C121.9 69.7 135.6 64 149.8 64C164 64 177.7 69.7 187.8 79.8C197.9 89.9 203.6 103.6 203.6 117.8C203.6 147.5 179.5 172.1 149.8 172.1zM543.9 512L451.2 512L451.2 366.4C451.2 331.7 450.5 287.2 402.9 287.2C354.6 287.2 347.2 324.9 347.2 363.9L347.2 512L254.4 512L254.4 212.9L343.5 212.9L343.5 253.7L344.8 253.7C357.2 230.2 387.5 205.4 432.7 205.4C526.7 205.4 544 267.3 544 347.7L544 512L543.9 512z" fill="#000"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="social-label">
+                  <strong>Linkedin</strong>
+                  <span class="long_disc">Thoughts and updates</span>
+                  <span class="short_disc">Updates</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- These three cards will be moved into the collapsible area by JS -->
+            <a class="social-card" href="#" target="_blank" rel="noreferrer">
+              <div class="social-top">
+                <div class="social-icon">
+                  <svg viewBox="0 0 450 450" width="100%" height="100%" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feDropShadow dx="0" dy="0" stdDeviation="22" flood-color="#f7c76a" flood-opacity="1" />
+                      </filter>
+                    </defs>
+                    <g filter="url(#glow)">
+                      <path d="M416.071 184.5208c-37.7607 0.0903 -74.5954 -11.6858 -105.3004 -33.6649v153.289c-0.0395 107.3255 -116.2473 174.3613 -209.1742 120.6644 -92.9269 -53.6969 -92.8777 -187.8538 0.0886 -241.4824 26.853 -15.4904 58.1027 -21.5892 88.8096 -17.3325v77.0991c-46.9985 -14.7833 -92.3759 26.8546 -81.6793 74.9481 10.6966 48.0936 69.4447 66.5726 105.7466 33.2623 13.2108 -12.122 20.731 -29.2295 20.7306 -47.159V4.48h75.4781c-0.0525 6.3739 0.4816 12.7392 1.5953 19.0153 5.3007 28.3156 22.024 53.2004 46.2389 68.8051 17.046 11.2711 37.0308 17.2785 57.4662 17.2742Z" fill="#000"/>
+                    </g>
+                  </svg>
+                </div>
+                <div class="social-label">
+                  <strong>TikTok</strong>
+                  <span class="long_disc">Short form &amp; videos</span>
+                  <span class="short_disc">Video bites</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="social-card" href="#" target="_blank" rel="noreferrer">
+              <div class="social-top">
+                <div class="social-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18.9 3H15.7L12.7 7.18 9.38 3H3.5l6.3 7.95L3.1 21h3.2l3.3-4.71L15.4 21h5.8l-6.5-8.19L18.9 3zm-3.1 15.36-8.31-10.7 1.06-1.47 8.41 10.83-1.16 1.34z" />
+                  </svg>
+                </div>
+                <div class="social-label">
+                  <strong>X</strong>
+                  <span class="long_disc">Thoughts and updates</span>
+                  <span class="short_disc">Quick takes</span>
+                </div>
+              </div>
+            </a>
+
+            <a class="social-card" href="#" target="_blank" rel="noreferrer">
+              <div class="social-top">
+                <div class="social-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.66 0 3 1.34 3 3v10c0 1.66-1.34 3-3 3H7c-1.66 0-3-1.34-3-3V7c0-1.66 1.34-3 3-3h10zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.51 4.51 0 0 0 12 7.5zm0 2A2.5 2.5 0 1 1 9.5 12 2.5 2.5 0 0 1 12 9.5zm4.75-2.88a1.12 1.12 0 1 0 1.12 1.12 1.12 1.12 0 0 0-1.12-1.12z" />
+                  </svg>
+                </div>
+                <div class="social-label">
+                  <strong>Instagram</strong>
+                  <span class="long_disc">Visual work and life</span>
+                  <span class="short_disc">Visuals &amp; life</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- Work and tools section -->
+        <section class="section">
+          <div class="section-heading">
+            <h2>Work and tools</h2>
+            <span>Deep dives</span>
+          </div>
+
+          <div class="links-list">
+            <a class="link-row" href="portfolio.html" rel="noreferrer">
+              <div class="link-main">
+                <div class="link-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 6a2 2 0 0 1 2-2h3.17a2 2 0 0 1 1.41.59l1.83 1.83H18a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6zm8.83 0H6v10h12V9h-5.17l-2-2z" />
+                  </svg>
+                </div>
+                <div class="link-text">
+                  <strong>Online Portfolio</strong>
+                  <span>Case studies, projects and background</span>
+                </div>
+              </div>
+              <div class="link-open">➦</div>
+            </a>
+
+            <a class="link-row" href="https://github.com/" target="_blank" rel="noreferrer">
+              <div class="link-main">
+                <div class="link-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.5.54-3.03-1.21-3.03-1.21-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.61.07-.61 1 .07 1.53 1.04 1.53 1.04.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-1.99-.23-4.09-.99-4.09-4.42 0-.98.35-1.79.93-2.43-.09-.23-.4-1.16.09-2.42 0 0 .75-.24 2.46.93a8.47 8.47 0 0 1 4.48 0c1.71-1.17 2.46-.93 2.46-.93.49 1.26.18 2.19.09 2.42.58.64.93 1.45.93 2.43 0 3.44-2.11 4.18-4.12 4.41.36.31.68.92.68 1.86 0 1.35-.01 2.43-.01 2.76 0 .27.18.58.69.48A10 10 0 0 0 12 2z" />
+                  </svg>
+                </div>
+                <div class="link-text">
+                  <strong>Github REPOSITORY</strong>
+                  <span>Code and experiments</span>
+                </div>
+              </div>
+              <div class="link-open">➦</div>
+            </a>
+
+            <a class="link-row" href="ai.html" target="_blank" rel="noreferrer">
+              <div class="link-main">
+                <div class="link-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2zm0-4h-2V7h2z" />
+                  </svg>
+                </div>
+                <div class="link-text">
+                  <strong>AI Agents / Automation</strong>
+                  <span>Telegram assistant for tasks and notes</span>
+                </div>
+              </div>
+              <div class="link-open">➦</div>
+            </a>
+
+            <a class="link-row" href="shop.html" target="_blank" rel="noreferrer">
+              <div class="link-main">
+                <div class="link-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 4h14l-1.5 9H8.24L7 4zm-2 0H3v2h2l1.6 9.59A2 2 0 0 0 8.57 17H19v-2H8.57l-.2-1.18L7 4zM8 20a2 2 0 1 0 2-2 2 2 0 0 0-2 2zm8 0a2 2 0 1 0 2-2 2 2 0 0 0-2 2z" />
+                  </svg>
+                </div>
+                <div class="link-text">
+                  <strong>Shop</strong>
+                  <span>Digital resources and templates</span>
+                </div>
+              </div>
+              <div class="link-open">➦</div>
+            </a>
+
+            <a class="link-row" href="blog.html" target="_blank" rel="noreferrer">
+              <div class="link-main">
+                <div class="link-icon">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 4h14v2H5v14H3V6a2 2 0 0 1 2-2zm4 4h10v2H9zm0 4h10v2H9zm0 4h7v2H9z" />
+                  </svg>
+                </div>
+                <div class="link-text">
+                  <strong>Notes and blog</strong>
+                  <span>Writing on structure, systems and automation</span>
+                </div>
+              </div>
+              <div class="link-open">➦</div>
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <!-- Fixed floating toggle anchored above the footer -->
+      <div class="floating-toggle">
+        <div class="scroll-indicator-wrap" id="toggleLinks">
+          <div class="scroll-indicator">
+            <div class="scroll-indicator-inner">
+              <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24">
+                <g transform="translate(0,-3)">
+                  <path d="M12 16.5c-.32 0-.63-.12-.87-.36l-5-5a1.24 1.24 0 0 1 0-1.77 1.26 1.26 0 0 1 1.78 0L12 13.96l4.09-4.59a1.26 1.26 0 0 1 1.78 0 1.24 1.24 0 0 1 0 1.77l-5 5c-.24.24-.55.36-.87.36z" />
+                </g>
+                <g transform="translate(0,3)">
+                  <path d="M12 16.5c-.32 0-.63-.12-.87-.36l-5-5a1.24 1.24 0 0 1 0-1.77 1.26 1.26 0 0 1 1.78 0L12 13.96l4.09-4.59a1.26 1.26 0 0 1 1.78 0 1.24 1.24 0 0 1 0 1.77l-5 5c-.24.24-.55.36-.87.36z" />
+                </g>
+              </svg>
+            </div>
+          </div>
+          <!-- <div class="scroll-label" id="toggleLabel">Show</div> -->
+        </div>
+      </div>
+
+      <span>Copyright © 2025</span>
+      <span><strong>Asith Mahat</strong></span>
+    </footer>
+  </div>
+
+  <script src="scripts/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,1032 @@
+/* 
+  Root design tokens 
+  These custom properties let you tweak theme colors, radius, and timings in one place.
+*/
+:root {
+  --bg: #040404;
+  --card: #0b0b0b;
+  --accent: #e6b84c;                 /* slightly deeper gold */
+  --accent-soft: rgba(230, 184, 76, 0.14);
+  --text-main: #fff8e4;
+  --text-soft: #f0e2bf;
+  --text-muted: #c1ad7a;
+  --text-subtle-red: #c68f2d;
+  --highlight: #ffd97a;
+  --danger: #ff355e;
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.75);
+  --shadow-hard: 0 0 12px 12px rgba(0, 0, 0, 0.7);
+  --transition-fast: 180ms linear;
+  --transition-med: 260ms linear;
+  --gold-glow-strong: rgba(230, 184, 76, 0.45);
+  --gold-glow-soft: rgba(230, 184, 76, 0.18);
+  --gold-border: rgba(230, 184, 76, 0.35);
+  --gold-shadow: rgba(230, 184, 76, 0.55);
+}
+
+/* Global reset - remove default margins and make box model predictable */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+/* Main page background and base typography */
+body {
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background:#141414;
+  color: var(--text-main);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: clamp(16px, 4vw, 48px) 20px 80px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* App container card that holds the whole experience */
+.app-shell {
+  width: min(100%, 560px);
+  margin: clamp(12px, 3vw, 32px);
+  border-radius: 20px;
+  box-shadow: var(--shadow-hard);
+  position: relative;
+  overflow: visible;
+  min-width: 360px;
+}
+
+/* 
+  Loader 
+  Full screen overlay that animates away when the site is loaded.
+*/
+.loader {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #1d1406 0, #080503 55%, #000 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+/* Two diagonal panels that slide away to reveal the site */
+.loader-panel {
+  position: absolute;
+  width: 130%;
+  height: 130%;
+  background: #050608;
+  top: -10%;
+  left: -10%;
+  transform-origin: center;
+  z-index: 1;
+}
+
+.loader-panel.left {
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.loader-panel.right {
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+/* Logo and tagline in the center of the loader */
+.loader-logo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.loader-logo img {
+  width: min(260px, 60vw);
+  filter: drop-shadow(0 0 20px rgba(244, 200, 87, 0.7));
+}
+
+.loader-logo span {
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+
+/* Loader exit transitions are triggered by body.site-loaded in JS */
+body.site-loaded .loader-logo {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 220ms ease, transform 260ms ease;
+}
+
+body.site-loaded .loader-panel.left {
+  transform: translate(-100%, -100%);
+  transition: transform 720ms ease-in-out;
+}
+
+body.site-loaded .loader-panel.right {
+  transform: translate(100%, 100%);
+  transition: transform 720ms ease-in-out;
+}
+
+body.site-loaded .loader {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease 620ms;
+}
+
+/* 
+  Hero adjustments when the folder body is open 
+  Controlled by body.links-open toggle in JS.
+*/
+body.links-open .hero {
+  padding: 0px 22px 14px 22px;
+  margin-top: 0px;
+}
+
+body.links-open .hero-logo-wrapper {
+  transform: scale(0.68);
+  margin-bottom: -25px; /* Controls vertical gap between logo and text when open */
+}
+
+body.links-open .hero-title {
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+
+body.links-open .hero-divider {
+  margin-bottom: 6px;
+}
+
+/* 
+  Hero 
+  The top "folder cover" with logo and name.
+*/
+.hero {
+  /* margin: 10px 0 0 0; */
+  padding: 40px 32px 40px 32px;
+  border-radius: 15px 15px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 0 8px 8px #020202;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  background: radial-gradient(circle at top, var(--gold-glow-soft) 0, #050505 52%);
+}
+
+/* Circular logo halo container */
+.hero-logo-wrapper {
+  width: clamp(200px, 45vw, 310px);
+  height: clamp(200px, 45vw, 310px);
+  border-radius: 999px;
+  background: radial-gradient(circle at center, rgba(244, 200, 87, 0.18) 0, rgba(5, 6, 8, 0.98) 55%);
+  border: 1px solid var(--gold-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 22px;
+  box-shadow:
+    0 0 25px rgba(244, 200, 87, 0.5),
+    0 16px 40px rgba(0, 0, 0, 0.9);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Inner ring */
+.hero-logo-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+}
+
+/* Actual logo image */
+.hero-logo {
+  width: 70%;
+  filter: drop-shadow(0 0 14px rgba(244, 200, 87, 0.85));
+}
+
+/* Name text */
+.hero-title {
+  font-size: clamp(22px, 4.5vw, 28px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  color: var(--text-soft);
+}
+
+/* Role text */
+.hero-role {
+  font-size: clamp(12px, 2.8vw, 14px);
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: 3px;
+}
+
+.hero-discription {
+  font-size: clamp(10px, 2.2vw, 11px);
+  color: var(--highlight);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: 20px;
+}
+
+/* Optional secondary tagline (not rendered in current HTML) */
+.hero-tagline {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+}
+
+/* Thin glowing divider line under the name */
+.hero-divider {
+  width: 130px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(244, 200, 87, 0.7), transparent);
+  opacity: 0.9;
+  margin-bottom: 18px;
+}
+
+/* 
+  Shared transition definition for hero elements 
+  This is why the shrink and expand is smooth when the body opens.
+  To tweak speed: change 1750ms to a lower value (for example 600ms).
+*/
+.hero,
+.hero-logo-wrapper,
+.hero-title,
+.hero-role,
+.hero-discription,
+.hero-tagline,
+.hero-divider {
+  transition:
+    transform 1750ms ease,
+    padding 1750ms ease,
+    margin-bottom 1750ms ease,
+    font-size 1750ms ease,
+    opacity 1750ms ease,
+    max-height 1750ms ease;
+}
+
+
+
+/* 
+  Hero edge and glow 
+  This strip separates hero from the collapsible folder body and holds a soft glow.
+*/
+.hero-edge {
+  position: relative;
+  height: 22px;
+  background: linear-gradient(to bottom, #050608 0, #050608 35%, rgba(5, 6, 8, 0.98) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.02);
+  box-shadow: 0 -10px 24px rgba(0, 0, 0, 0.9);
+}
+
+/* Soft green glow under the hero edge that remains even when links are collapsed */
+.hero-edge::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -28px;
+  width: 120%;
+  height: 56px;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(244, 200, 87, 0.18) 0%,
+    rgba(244, 200, 87, 0.08) 30%,
+    transparent 60%
+  );
+  filter: blur(8px);
+  opacity: 1;
+  z-index: 0;
+}
+
+/* 
+  Collapsible links wrapper - the folder body 
+  We animate max-height, opacity, and translation to create a smooth slide.
+*/
+.links-wrapper {
+  max-height: 0;
+  opacity: 0;
+  box-shadow: 0 7px 2px 2px #0c0c0c;
+  background-color: #0f0f0f;
+  transform: translateY(14px);
+  overflow: hidden;
+  transition:
+    max-height 1500ms ease,
+    opacity 1500ms ease,
+    transform 1500ms ease;
+}
+
+/* Expanded state is toggled by JS */
+.links-wrapper.expanded {
+  max-height: 2000px; /* Increase this if you add a lot more content */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Padding inside the folder body */
+.links-section {
+  padding: clamp(18px, 5vw, 28px);
+}
+
+/* Shared section styling for "Socials" and "Work and tools" */
+.section {
+  margin-bottom: 22px;
+}
+
+/* Section headings with label on the right */
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.section-heading h2 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-soft);
+}
+
+.section-heading span {
+  font-size: 11px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* 
+  Social grid 
+  Always two columns on desktop and mobile (columns are controlled later in media query).
+*/
+.social-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding-bottom: 28px; /* Space for the "Show more" button at bottom right */
+}
+
+/* Button that toggles extra social cards */
+.social-toggle-btn {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  padding: 6px 10px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  color: var(--text-subtle-red);
+  border: 0;
+  border-radius: 10px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Simple pressed feedback */
+.social-toggle-btn:active {
+  transform: translateY(1px);
+}
+
+/* 
+  Single social tile card 
+  Applies to both always visible and extra cards.
+*/
+.social-card {
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.04) 0, rgba(10, 12, 16, 0.98) 60%);
+  border-radius: var(--radius-lg);
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 1;
+  pointer-events: auto;
+  transition:
+    box-shadow 1300ms linear,
+    border-color 1300ms linear,
+    transform 1300ms linear,
+    opacity 220ms linear;
+}
+
+
+/* Glow overlay used on hover */
+.social-card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at top left, rgba(244, 200, 87, 0.3), transparent 55%);
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+/* Hover lift and glow for cards */
+.social-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(244, 200, 87, 0.7);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.95),
+    0 0 20px rgba(244, 200, 87, 0.35);
+}
+
+.social-card:hover::before {
+  opacity: 1;
+}
+
+/* 
+  Collapsible wrapper for extra socials 
+  JS moves all cards after the first two into .social-extra.
+*/
+.social-extra {
+  grid-column: 1 / -1;       /* Span both columns so it behaves as a subfolder row */
+  overflow: visible;         /* Keep glows and shadows visible when fully expanded */
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    max-height 1300ms linear,
+    opacity 1300ms linear,
+    transform 1300ms linear;
+}
+
+/* Inner grid that keeps extra cards in two columns as well */
+.social-extra-inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  padding: 0 0 10px 0;
+}
+
+/* Expanded state of extra socials, controlled by button in JS */
+.social-extra.expanded {
+  max-height: 800px;       /* Increase if you add more cards */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Flex layout for icon and text inside a social tile */
+.social-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Round neon icon badge */
+.social-icon {
+  width: clamp(48px, 12vw, 60px);
+  height: clamp(48px, 12vw, 60px);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(244, 200, 87, 0.22) 0, rgba(5, 6, 8, 0.98) 65%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(244, 200, 87, 0.6);
+  box-shadow: 0 0 12px rgba(244, 200, 87, 0.65);
+  flex-shrink: 0;
+}
+
+/* Icon SVG itself */
+.social-icon svg {
+  width: clamp(26px, 7vw, 35px);
+  height: clamp(26px, 7vw, 35px);
+  fill: #ffffff;
+}
+
+/* Stack for title and subtitle inside tile */
+.social-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+}
+
+.social-label strong {
+  font-size: clamp(12px, 3vw, 13px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.social-label span {
+  font-size: clamp(10px, 2.4vw, 11px);
+  color: var(--text-muted);
+  line-height: 1.3;
+  white-space: normal;
+  line-clamp: 2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.social-label .short_disc {
+  display: none;
+}
+
+.social-label .long_disc {
+  display: -webkit-box;
+}
+
+
+
+
+
+/* 
+  Work and tools list 
+  Vertical list of "link-row" items.
+*/
+.links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Individual link row with icon, text, and round arrow button */
+.link-row {
+  background: linear-gradient(135deg, rgba(15, 18, 24, 0.98), rgba(9, 11, 16, 0.98));
+  border-radius: 18px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 18px 48px rgba(0,0,0,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: nowrap;
+  min-height: 68px;
+  cursor: pointer;
+  transition:
+    transform var(--transition-med),
+    border-color var(--transition-med),
+    box-shadow var(--transition-med),
+    background 220ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow overlay from left side on hover */
+.link-row::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at left, rgba(244, 200, 87, 0.25), transparent 55%);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  pointer-events: none;
+}
+
+/* Hover lift and glow for work links */
+.link-row:hover {
+  transform: translateY(-3px);
+  border-color: rgba(244, 200, 87, 0.75);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.96),
+    0 0 18px rgba(244, 200, 87, 0.32);
+  background: linear-gradient(135deg, rgba(16, 22, 24, 0.98), rgba(9, 12, 16, 0.98));
+}
+
+.link-row:hover::before {
+  opacity: 1;
+}
+
+/* Left side (icon plus text) inside link row */
+.link-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.link-text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Square icon container in work section */
+.link-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(244, 200, 87, 0.12);
+  border: 1px solid var(--gold-border);
+  flex-shrink: 0;
+}
+
+.link-icon svg {
+  width: 30px;
+  height: 30px;
+  fill: var(--accent);
+}
+
+/* Text stack for link title and description */
+.link-text strong {
+  font-size: clamp(12px, 3vw, 13px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link-text span {
+  display: block;
+  font-size: clamp(10px, 2.4vw, 11px);
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Round arrow bubble on the right */
+.link-open {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(244, 200, 87, 0.28) 0, rgba(10, 10, 14, 0.98) 65%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 14px rgba(244, 200, 87, 0.6);
+  flex-shrink: 0;
+}
+
+.link-open svg {
+  width: 14px;
+  height: 14px;
+  fill: #ffffff;
+}
+
+
+
+
+
+
+/* 
+  Folder toggle control 
+  The circular button that rotates arrows and sits in a floating container near the footer.
+*/
+.scroll-indicator-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(244, 200, 87, 0.2) 0, rgba(5, 6, 8, 0.96) 60%);
+  border: 1px solid rgba(244, 200, 87, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  transition: box-shadow var(--transition-med), border-color var(--transition-med), transform var(--transition-med);
+}
+
+/* Extra inner ring on the circular button */
+.scroll-indicator-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.85);
+}
+
+/* Active state when folder is open */
+.scroll-indicator-wrap.active {
+
+  border-color: rgba(244, 200, 87, 0.75);
+  transform: translateY(1px);
+}
+
+/* Container for the double chevron icon. Only rotates. */
+.scroll-indicator {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: transform var(--transition-med);
+  transform-origin: center;
+}
+
+/* Inner wrapper that handles the vertical sway animation */
+.scroll-indicator-inner {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: swayY 1125ms ease-in-out infinite;
+  transition: transform var(--transition-med);
+  transform-origin: center;
+}
+
+/* Rotate the arrow stack when active */
+.scroll-indicator-wrap.active .scroll-indicator {
+  transform: rotate(180deg);
+}
+
+/* Chevron icon styling */
+.scroll-indicator svg {
+  width: 24px;
+  height: 24px;
+  fill: #ffffff;
+  filter: drop-shadow(0 0 6px rgba(244, 200, 87, 0.85));
+}
+
+/* Up down sway keyframes for the inner arrow wrapper */
+@keyframes swayY {
+  0% {
+    transform: translateY(-2px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(-2px);
+  }
+}
+
+/* Text label "Show" or "Hide" under the toggle in the default layout */
+.scroll-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+/* Floating container that positions the toggle above the footer */
+.floating-toggle {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 50px;
+  pointer-events: auto;
+  z-index: 40;
+  margin: 0;
+  background: #111;
+}
+
+/* Compact, rectangular version of the toggle when used inside .floating-toggle */
+.floating-toggle .scroll-indicator-wrap {
+  width: 50px;
+  height: 40px; /*show links toggle button*/
+  border-radius: 8px 8px 0 0;
+  background: radial-gradient(circle at top, var(--gold-glow-strong) 0, var(--gold-glow-soft) 0%, #050505 100%);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  overflow: visible;
+  cursor: pointer;
+  transition: box-shadow var(--transition-med), transform var(--transition-med);
+}
+
+/* Remove circular inner border ring for the floating version */
+.floating-toggle .scroll-indicator-wrap::before {
+  display: none;
+}
+
+/* Active state keeps only side and top glows */
+.floating-toggle .scroll-indicator-wrap.active {
+  transform: translateY(1px);
+}
+
+/* Label drawn inside the rectangular toggle, visually nudged down */
+.scroll-indicator-wrap .scroll-label {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%) translateY(15px);
+  margin: 0;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  pointer-events: none;
+  opacity: 0.95;
+  white-space: nowrap;
+}
+
+
+
+
+
+
+
+
+/* Footer at the very bottom of the card */
+.footer {
+  padding: 36px 0 60px 0;
+  border-radius: 0 0 20px 20px;
+  background-color: #050608;
+  box-shadow: 0 0 8px 8px #020202;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  position: relative;
+  background: radial-gradient(circle at bottom, var(--gold-glow-soft) 0, #050505 52%);
+}
+
+.footer span {
+  display: block;
+  line-height: 1.4;
+}
+
+.footer strong {
+  color: var(--text-soft);
+  font-weight: 500;
+}
+
+
+
+/* Tablet tweaks */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 60px;
+  }
+
+  .link-row {
+    padding: 11px 12px;
+    min-height: 64px;
+  }
+
+  .link-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .social-grid {
+    gap: 10px;
+  }
+}
+
+/* Compact layout before phone */
+@media (max-width: 640px) {
+  .link-row {
+    padding: 10px 12px;
+  }
+
+  .link-text strong {
+    font-size: clamp(11px, 3.2vw, 12px);
+  }
+
+  .link-text span {
+    font-size: clamp(10px, 2.8vw, 11px);
+  }
+}
+
+/* Narrow phone adjustments */
+@media (max-width: 540px) {
+  body {
+    padding: clamp(10px, 3vw, 28px) 12px 48px;
+  }
+
+  .app-shell {
+    border-radius: 16px;
+  }
+
+  .links-wrapper,
+  .footer {
+    border-radius: 0 0 16px 16px;
+  }
+
+  .link-row {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .link-text strong {
+    letter-spacing: 0.04em;
+  }
+
+  .floating-toggle {
+    transform: translate(-50%, -90%);
+  }
+}
+
+@media (max-width: 480px) {
+  .social-label .long_disc {
+    display: none;
+  }
+
+  .social-label .short_disc {
+    display: -webkit-box;
+  }
+
+  .link-text span {
+    white-space: normal;
+    line-clamp: 2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.3;
+  }
+}
+
+/* Compact phones */
+@media (max-width: 420px) {
+  .hero-logo-wrapper {
+    width: clamp(160px, 60vw, 200px);
+    height: clamp(160px, 60vw, 200px);
+  }
+
+  .social-card {
+    padding: 8px 10px;
+  }
+
+  .social-icon {
+    border-radius: 14px;
+    width: clamp(36px, 14vw, 44px);
+    height: clamp(36px, 14vw, 44px);
+  }
+
+  .social-label strong {
+    display: block;
+    font-size: 12px;
+  }
+
+  .social-label span {
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+  }
+
+  .link-main {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .app-shell{
+    min-width:340px;
+  }
+
+  .link-row {
+    padding: 8px 10px;
+  }
+
+  .link-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .link-text strong {
+    font-size: 11px;
+  }
+
+}
+
