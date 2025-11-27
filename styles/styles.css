@@ -44,9 +44,9 @@ body {
   color: var(--text-main);
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   min-height: 100vh;
-  padding: clamp(16px, 4vw, 48px) 20px 80px;
+  /* padding: clamp(16px, 4vw, 48px) 20px 80px; */
 }
 
 a {
@@ -967,6 +967,11 @@ body.links-open .hero-divider {
   .social-label .short_disc {
     display: -webkit-box;
   }
+
+  .social-card .social-top strong {
+    font-size: 11.5px;
+  }
+
 
   .link-text span {
     white-space: normal;
