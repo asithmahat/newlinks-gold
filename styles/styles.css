@@ -68,6 +68,13 @@ img {
   position: relative;
   overflow: visible;
   min-width: 360px;
+
+
+  background: #050505;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  /* box-shadow: 0 0 40px rgba(0, 0, 0, 0.9); */
+  /* overflow: hidden; */
+  
 }
 
 /* 
@@ -189,7 +196,7 @@ body.links-open .hero-divider {
   position: relative;
   box-shadow: 0 0 8px 8px #020202;
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-  background: radial-gradient(circle at top, var(--gold-glow-soft) 0, #050505 52%);
+  /* background: radial-gradient(circle at top, var(--gold-glow-soft) 0, #050505 52%); */
 }
 
 /* Circular logo halo container */
@@ -879,7 +886,7 @@ body.links-open .hero-divider {
   font-size: 11px;
   color: var(--text-muted);
   position: relative;
-  background: radial-gradient(circle at bottom, var(--gold-glow-soft) 0, #050505 52%);
+  /* background: radial-gradient(circle at bottom, var(--gold-glow-soft) 0, #050505 52%); */
 }
 
 .footer span {
