@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       inner.className = "social-extra-inner";
 
       // Move the extra cards into the inner grid
-      extraCards.forEach(card => inner.appendChild(card));
+      extraCards.forEach((card) => inner.appendChild(card));
       extraWrapper.appendChild(inner);
 
       // Append wrapper after the first two cards inside the main social grid
